@@ -14,13 +14,13 @@ This is a backend application project for a hospital which is required on a tech
 
 4. Import the database that reserved in `/documentation/hospital_db.sql` path.
 
-5. Change the database configuration in `config/config.php`. On the object with the database key, change it according to your computer / server configuration
+5. Change the database configuration in `/config/config.php`. On the object with the database key, change it according to your computer / server configuration
 
 6. Test with Postman.
    - Open your Postman app
    - Click `file/import` at top-left of the app's tab or you can use shortcut `ctrl + o`
    - After the import modal appears, click `Upload Files`
-   - Navigate to path `documentation/backend_hospital_app.postman_collection.json`
+   - Navigate to path `/documentation/backend_hospital_app.postman_collection.json`
    - Click at the collection menu with name `Hospital App Documentation` and click on `Variables` tab.
    - Change the `URL` - `Current Value` with current endpoint of this backend app.
    - Choose method and send the request. See if the API works.

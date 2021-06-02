@@ -46,7 +46,16 @@ class PasienController extends \Phalcon\Mvc\Controller
                 'data' => $pasienData
             ]);
         } else {
-            return (new Responser())->ok('Success. However, the data is empty', []);
+            return (new Responser())->ok('Success. However, the data is empty', [
+                'pagination' => [
+                    'amountOfData' => (new Pasien())::count(),
+                    'currentPage' => $page,
+                    'limit' => $limit,
+                    'startFrom' => $offset,
+
+                ],
+                'data' => $pasienData
+            ]);
         }
     }
 
@@ -134,5 +143,9 @@ class PasienController extends \Phalcon\Mvc\Controller
         } else {
             return (new Responser())->bad_request("ID that you requested doesn't exist in our system", null);
         }
+    }
+    public function optionsBase()
+    {
+        return (new Responser())->preflight();
     }
 }

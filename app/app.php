@@ -11,6 +11,23 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
  * Add your routes here
  */
 
+//  Adding CORS before running router
+$app->before(
+    function () use ($app) {
+
+        $origin = $app->request->getHeader("ORIGIN") ? $app->request->getHeader("ORIGIN") : '*';
+
+        $app->response->setHeader("Access-Control-Allow-Origin", $origin)
+            ->setHeader("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE,OPTIONS')
+            ->setHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Range, Content-Disposition, Content-Type, Authorization')
+            ->setHeader("Access-Control-Allow-Credentials", true);
+
+        $app->response->sendHeaders();
+        return true;
+    }
+);
+
+// Router controlling begin
 $controllers = new MicroCollection();
 
 $controllers->setHandler(new PasienController());
@@ -28,10 +45,15 @@ $controllers->get('/{id}', 'detail');
 $controllers->post('/', 'add');
 
 // Update Pasien
-$controllers->patch('/{id}', 'update');
+$controllers->put('/{id}', 'update');
 
 // Delete Pasien
 $controllers->delete('/{id}', 'delete');
+
+// Preflight CORS purposes
+$controllers->options('/', 'optionsBase');
+$controllers->options('/{id}', 'optionsBase');
+
 
 // Mount the collections
 $app->mount($controllers);

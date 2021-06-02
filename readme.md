@@ -8,13 +8,13 @@ This is a backend application project for a hospital which is required on a tech
 
 1. Install the PHP Phalcon Framework first. That is <b>required</b>. For the documentation to install the PHP Phalcon Framework, please open the following link : https://phalcon.io/en-us.
 
-2. Run the web server and mysql server
+2. Run the `web server` and `MySQL server`. It is recommended to use `Apache2` as the web server. Because the default `.htaccess` configuration is set for `Apache2`. If you want to use another web server, please read the `Phalcon PHP Framework` documentation at: https://docs.phalcon.io/4.0/en/webserver-setup.
 
 3. Clone this repository with command : `git clone https://github.com/RZID/BE-Hospital.git` in your computer / server.
 
 4. Import the database that reserved in `/documentation/hospital_db.sql` path.
 
-5. Change the database configuration in `/config/config.php`. On the object with the database key, change it according to your computer / server configuration
+5. Change the database configuration in `/config/config.php`. On the object with the database key, change it according to your computer / server configuration.
 
 6. Test with Postman.
    - Open your Postman app
